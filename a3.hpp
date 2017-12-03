@@ -25,7 +25,7 @@ __global__ void reduce2(float* gin, float* gout) {
 void gaussian_kde(int n, float h, const std::vector<float>& x, std::vector<float>& y) {
     dim3 dimGrid(1, 1);
     dim3 dimBlock(n, n);
-    reduce2<<<dimGrid, dimBlock>>>(x.data(),y.data());
+    reduce2<<<dimGrid, dimBlock>>>((float *)x.data(),(float *)y.data());
 } // gaussian_kde
 
 #endif // A3_HPP
