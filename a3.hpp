@@ -6,6 +6,7 @@
 #ifndef A3_HPP
 #define A3_HPP
 
+#include <cuda.h>
 // we halve the number of blocks
 __global__ void reduce2(int* gin, int* gout) {
     extern __shared__ int sdata[];
