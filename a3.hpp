@@ -8,7 +8,7 @@
 
 #include <cuda.h>
 // we halve the number of blocks
-__global__ void reduce2(int* gin, int* gout) {
+__global__ void reduce2(float* gin, float* gout) {
     extern __shared__ int sdata[];
     int tid = threadIdx.x;
     int i = blockIdx.x * (blockDim.x * 2) + threadIdx.x;
@@ -25,7 +25,7 @@ __global__ void reduce2(int* gin, int* gout) {
 void gaussian_kde(int n, float h, const std::vector<float>& x, std::vector<float>& y) {
     dim3 dimGrid(1, 1);
     dim3 dimBlock(n, n);
-    reduce2<<<dimGrid, dimBlock>>>(x,y);
+    reduce2<<<dimGrid, dimBlock>>>(x.data(),y.data());
 } // gaussian_kde
 
 #endif // A3_HPP
