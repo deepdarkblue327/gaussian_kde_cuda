@@ -3,7 +3,6 @@
 #include <random>
 #include <vector>
 #include <algorithm>
-
 #include "a3.hpp"
 
 
